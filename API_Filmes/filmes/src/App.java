@@ -4,6 +4,8 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
+import java.util.List;
+import java.util.Map;
 
 public class App {
     public static void main(String[] args) throws IOException, InterruptedException {
@@ -15,7 +17,10 @@ public class App {
 
         HttpResponse<String> response = clientHttp.send(request, BodyHandlers.ofString());
 
-        
+        String body = response.body();
+
+        List<Map<String, String>> listaDeFilmes = JsonParser.parse(body);
+
 
     }
 }
