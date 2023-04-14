@@ -1,9 +1,12 @@
+import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.net.http.HttpResponse.BodyHandlers;
 
 public class App {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, InterruptedException {
         
         var url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
 
@@ -11,6 +14,6 @@ public class App {
         var clientHttp = HttpClient.newHttpClient();
         var request = HttpRequest.newBuilder(addres).GET().build();
 
-        
+        HttpResponse<String> response = clientHttp.send(request, BodyHandlers.ofString());
     }
 }
