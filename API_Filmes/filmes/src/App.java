@@ -9,11 +9,13 @@ public class App {
     public static void main(String[] args) throws IOException, InterruptedException {
         
         var url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
-
         var addres = URI.create(url);
         var clientHttp = HttpClient.newHttpClient();
         var request = HttpRequest.newBuilder(addres).GET().build();
 
         HttpResponse<String> response = clientHttp.send(request, BodyHandlers.ofString());
+
+        
+
     }
 }
