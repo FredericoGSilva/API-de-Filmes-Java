@@ -19,8 +19,16 @@ public class App {
 
         String body = response.body();
 
-        List<Map<String, String>> listaDeFilmes = JsonParser.parse(body);
+        var jsonParser = new JsonParser();
 
+        List<Map<String, String>> listaDeFilmes = jsonParser.parse(body);
+
+        for (Map<String,String> filme : listaDeFilmes) {
+            System.out.println("Título: " + "\u001b[4m" + filme.get("title") + "\u001b[m");
+            System.out.println("Poster: " + filme.get("image"));
+            System.out.println("\u001b[1m \u001b[42m Classificação: " + filme.get("imDbRating") +"\u001b[m"+ "\n");     
+        }
 
     }
+
 }
